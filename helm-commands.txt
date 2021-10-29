@@ -1,0 +1,11 @@
+
+GETTING STARTED
+
+    helm create mychart                                 Create new chart
+    helm install full-coral ./mychart                   Install a chart as release "full-coral"
+    helm get manifest full-coral                        See manifest of loaded/installed chart
+    helm uninstall full-coral                           Uninstall chart
+
+    helm install --debug --dry-run goodly-guppy ./mychart       Don't install chart but render to screen
+    
+

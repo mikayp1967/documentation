@@ -1,0 +1,27 @@
+https://helm.sh/docs/chart_template_guide/builtin_objects/
+
+STRUCTURE
+
+    mychart/
+    Chart.yaml
+    values.yaml
+    charts/
+    templates/
+
+BUILT IN OBJECTS
+
+    Release             Top level object (.Name, .Namespace, .Revision etc)
+    Values              Values from values.yaml
+    Chart               Content of Chart.yaml (.Name, .Version)
+    Files               Access non-special files
+    Capabilities        Information abotu the K8s clueter (.KubeVersion, 
+    Template            info on current template
+
+VALUES FILES
+
+    Order of specificity:   
+        values.yaml
+        Paren values.yaml
+        Parameters from files passed with -f flag
+        Parameters passwed with --set
+
