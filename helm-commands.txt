@@ -7,5 +7,50 @@ GETTING STARTED
     helm uninstall full-coral                           Uninstall chart
 
     helm install --debug --dry-run goodly-guppy ./mychart       Don't install chart but render to screen
-    
 
+COMMAND SUMMARY
+
+https://helm.sh/docs/helm/helm/
+
+    helm env                                            Print all helm environment info
+    helm get [all/hoksmanifest/values]                  Download extended information of a named release
+    helm history                                        Historical revisions for given release
+    helm list [--all/--failed]                          List releases for specified namespace
+    helm package                                        Package a chart directory into a chart archive
+    helm plugin                                         Install, list, or uninstall Helm plugins
+    helm rollback                                       Roll back a release to a previous revision
+    helm show [all/chart/CRDs/values]                   Show info about a chart
+    helm status                                         Display the status of the named release
+    helm template                                       Locally render templates
+    helm test                                           Run tests for a release
+    helm uninstall                                      Uninstall a release
+    helm upgrade                                        Upgrade a release
+    helm verify                                         Verify that a chart at the given path has been signed and is valid
+    helm version                                        Print the client version information
+
+
+HELM COMPLETION
+
+    helm completion bash > /etc/bash_completion.d/helm
+
+
+DEPENDENCY
+https://helm.sh/docs/helm/helm_dependency/
+
+    helm dependency build                       Rebuild the charts/ directory based on the Chart.lock file
+    helm dependency update                      Update charts/ based on the contents of Chart.yaml
+    helm dependency list                        List dependencies for the given chart
+
+INSTALL
+https://helm.sh/docs/helm/helm_install/
+
+    helm install [value assignment flags] <chart name> <chart location>
+        --dry-run                                       Dry run
+        
+REPOS
+https://helm.sh/docs/helm/helm_repo/
+
+    helm repo add/remove                        Add/remove chart repository
+    helm repo index                             generate an index file given a directory containing packaged charts
+    helm repo list                              List chart repositories
+    helm repo update                            Update information of available charts locally from chart repositories

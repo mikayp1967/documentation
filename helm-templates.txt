@@ -25,3 +25,45 @@ VALUES FILES
         Parameters from files passed with -f flag
         Parameters passwed with --set
 
+
+FUNCTIONS & PIPELINES
+   
+    Many functions are taken from GO and sprig template libraries
+        https://pkg.go.dev/text/template?utm_source=godoc#hdr-Functions
+        https://masterminds.github.io/sprig/
+
+    Functions are of the format functionName arg1 arg2... b ut an alternative is to pipe to functions as per unix
+
+    quote                       Put output in quotes 
+    repeat <iterations>         Echo input multiple times
+    default                     Default value to use if there is no defined value
+    lookup                      Lookup resources in running kube cluster, data returned as a dictionary
+    indent                      Indent given number of spaces (cab be useful for aligning yaml)
+    https://helm.sh/docs/chart_template_guide/function_list/
+
+
+FLOW CONTROL
+    https://helm.sh/docs/chart_template_guide/control_structures/
+
+    if/else/end
+    range                       for-each style loop (for a yaml list or passed params, "." is iteration value)
+    define                      Define template inside template
+    template                    Import a template
+    with                        Use different scope ($ references parent scope)
+
+    Condition example:          {{ if eq .Values.favorite.drink "coffee" }}mug: "true"{{ end }}
+    
+    {{-                         Chomp whitespace to left
+     -}}                        Chomp whitespace (incl newline) to right
+
+    
+
+VARIABLES
+
+    Variable assignment         {{- $relname := .Release.Name -}}
+    Multiple var assignment     {{- range $index, $topping := .Values.pizzaToppings }}
+    Variable referencing        $relname
+
+
+NAMED TEMPLATES
+
