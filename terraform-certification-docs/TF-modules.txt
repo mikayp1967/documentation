@@ -1,0 +1,62 @@
+	https://www.terraform.io/docs/language/modules/index.html
+	Modules are containers for multiple resources that are used together. A module consists of a collection of .tf and/or .tf.json files kept together in a directory.
+	
+	Root mocules - module in main working dir
+	Child Modules - Other modules
+	Published modules - external, eg terraform registry
+	
+
+USING MODULES
+
+	module "rds" {
+	  source = "git::ssh://git@bitbucket.mydomain.com/abc/modules-tf_aws_rds.git"
+
+	  vpc_id                  = "${data.aws_vpc.current.id}"
+	  subnets                 = ["${data.aws_subnet.data_subnet_ids.*.id}"]
+	  db_name                 = "${var.database_name}"
+	  db_username             = "${var.rds_user}"
+	  ...
+	}
+
+
+	
+
+META ARGUMENTS
+https://www.terraform.io/docs/language/meta-arguments/module-providers.html
+    count
+    for_each
+    providers
+    depends_on
+
+Referring to resources instide a module just use "module." in front of the resource/variable name
+
+MODULE SOURCES
+    Local paths
+    Terraform Registry
+    GitHub / Bitbucket / Generic Git
+    HTTP URLs
+    S3 buckets
+    GCS buckets
+
+eg:
+    source = "./consul"
+    source = "hashicorp/consul/aws"
+    source = "bitbucket.org/hashicorp/terraform-consul-aws"
+    source = "git::https://example.com/vpc.git"
+    source = "git@github.com:hashicorp/example.git"
+    source = "https://example.com/vpc-module.zip"
+    source = "s3::https://s3-eu-west-1.amazonaws.com/examplecorp-terraform-modules/vpc.zip"
+
+SPECIFYING A VERSION
+    version = "0.1.0"
+
+
+SIMPLE MODULE STRUCTURE
+    $ tree minimal-module/
+    .
+    ├── README.md
+    ├── main.tf
+    ├── variables.tf
+    ├── outputs.tf
+
+

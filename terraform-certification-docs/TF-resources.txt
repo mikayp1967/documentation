@@ -1,0 +1,107 @@
+https://www.terraform.io/docs/language/resources/syntax.html#meta-arguments
+	depends_on							Argument is list
+	count
+	for_each
+	provider
+	lifecycle
+		create_before_destroy
+		prevent_destroy
+		ignore_changes (list)
+	provisioner
+		file
+		local-exec
+		remote-exec
+
+
+
+
+https://www.terraform.io/docs/language/resources/syntax.html#operation-timeouts
+	resource "aws_db_instance" "example" {
+	  timeouts {
+		create = "60m"
+		delete = "2h"
+	  }
+	}
+
+
+
+https://www.terraform.io/docs/language/resources/behavior.html#local-only-resources
+	eg private keys. Only exist within state
+
+
+
+
+https://www.terraform.io/docs/language/meta-arguments/count.html
+	Note: A given resource or module block cannot use both count and for_each.
+	
+https://www.terraform.io/docs/language/meta-arguments/resource-provider.html
+	provider "google" {
+	  alias  = "europe"
+	  region = "europe-west1"
+	}
+
+	
+Connect to servers using SSH WinRM
+https://www.terraform.io/docs/language/resources/provisioners/syntax.html#passing-data-into-virtual-machines-and-other-compute-resources
+
+
+Remote-exec provisioner runs ont he remote resource, true or false
+https://www.terraform.io/docs/language/resources/provisioners/syntax.html
+
+How do you use 3rd party provisioners (%APPDATA%\terraform.d\plugins, ~/.terraform.d/plugins)
+
+https://www.terraform.io/docs/language/resources/provisioners/syntax.html#how-to-use-provisioners
+	provisioner "file" {
+	  source      = "conf/myapp.conf"
+	  destination = "/etc/myapp.conf"
+
+	  connection {
+		type     = "ssh"
+		user     = "root"
+		password = "${var.root_password}"
+		host     = "${var.host}"
+	  }
+	}
+
+Provisioner self object:
+https://www.terraform.io/docs/language/resources/provisioners/syntax.html#the-self-object
+	Can't used named resource,instead use self
+
+Creation time provisioners
+If a resource fails to create
+https://www.terraform.io/docs/language/resources/provisioners/syntax.html#creation-time-provisioners
+
+
+Destroy time provisioners:
+https://www.terraform.io/docs/language/resources/provisioners/syntax.html#destroy-time-provisioners
+	If when = destroy is specified, the provisioner will run when the resource it is defined within is destroyed.
+
+
+If a terraform provisioner fails it will also cause the terraform apply to fail, TRUE of False					
+Terraform failure scenario: https://www.terraform.io/docs/language/resources/provisioners/syntax.html#failure-behavior
+	on_failure = continue
+
+Which of the following are built in connection types of provisioners: *SSH, *WinRM, RDS, UDP		: https://www.terraform.io/docs/language/resources/provisioners/connection.html
+
+
+It is possible to execute a provisioner through a bastion host: *TRUE, False			https://www.terraform.io/docs/language/resources/provisioners/connection.html#connecting-through-a-bastion-host-with-ssh
+
+null_resource provisioners
+https://www.terraform.io/docs/language/resources/provisioners/null_resource.html
+
+Which one isn't a generic provisioner: File, local-exec, remote-exec, XXXXX				https://www.terraform.io/docs/language/resources/provisioners/file.html
+
+
+File provisioner - how to upload directory: 
+	https://www.terraform.io/docs/language/resources/provisioners/file.html#directory-uploads
+
+Local exec arguments:
+	https://www.terraform.io/docs/language/resources/provisioners/local-exec.html#argument-reference
+	
+
+remote-exec argument types: inline, script, scripts
+	https://www.terraform.io/docs/language/resources/provisioners/remote-exec.html#argument-reference
+
+How to use commands on scripts: (upload with file provisioner then inline to call)
+	https://www.terraform.io/docs/language/resources/provisioners/remote-exec.html#script-arguments
+

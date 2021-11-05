@@ -1,0 +1,77 @@
+Basic linux/BASH commands
+
+
+
+List files:
+	ls	[flags] [file list]
+		-l			long format (time date etc)
+		-t			Order by time
+		-r			Reverse order
+		-a			Show invisible files
+		
+	eg:
+		ls -ltr	fifi*				List all files that start "fifi" with all dates, time etc in date order reversed (newest files last)
+		
+View files
+	cat [file list]				
+	
+	eg:
+		cat fifi*					View all files that start "fifi"
+		
+	less [filename]					View file in a scrolling window so you can page up/down
+	
+	tail [filename]					View the last 10 lines of a file
+		-20 [filename]				View the last 20 lines, can be any number
+		
+	head							Works the same as tail but fiews the first 10 (or however many you specify) lines
+	
+	wc [filename]					Show number of lines, words and characters in a file
+	    -l, -w, -c							Just show number of lines, words or characters
+		
+Writing text to the screen:
+
+	echo {string]					Write string to the screen
+	printf "............"			Print scring to the screen. You can use formatting
+		\n							newline
+		\t							tab
+	
+	eg:
+		printf "the cat sat\non \tthe mat\n"				the cat sat
+															on      the mat
+		
+chaining commands:
+	|								passes 1 command to another
+	
+	eg
+	
+	printf "the cat sat\non	\tthe mat\n"|wc
+		2       6      24								2 lines, 6 words, 24 characters
+		
+		
+		
+Writing to a file
+	> [filename]			
+	eg:
+		printf "the cat sat\non	\tthe mat\n" > catfile		Write this to the file
+		cat catfile											View the file
+		
+	>> {filename]											Write to the end of a file
+		printf "the cat sat\non	\tthe mat\n" > catfile
+		printf "the dog ran away\n" >> catfile				Check out catfile now.
+		
+		
+		
+Searching files:
+
+	grep [pattern] [files]						you can do this directly on files or just pipe output to grep
+		-i										ignore case (uppercase and lower are counted the same)
+		-v										Exclude the lines that match (ie all the lines that don't match)
+	eg:
+		cat catfile|grep -i "Dog"				
+		
+	sed 's/<search pattern>/<replace pattern>/[option]'		edit lines coming in and change 1 pattern to another
+	eg:
+		echo "the cat sat on the mat"|sed 's/cat/dog/'		replace cat with dog.
+		echo "the cat sat on the chair"|sed 's/c/go/'		try this - only replaces 1st instance of the pattern
+		echo "the cat sat on the chair"|sed 's/c/go/g'		last value g=global, replace all instances of "c"
+	

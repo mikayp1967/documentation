@@ -1,0 +1,73 @@
+https://www.terraform.io/docs/language/expressions/index.html
+
+TYPES
+    string
+    number
+    bool
+    list
+    map - group of k/v pairs
+
+    null - special valueless type
+
+String values support escape sequences, Heredoc strings, Indented Heredoc and escaped $${ & %%{
+    ${      Interpolation of expression/variable
+    ${      Directives, eg "Hello, %{ if var.name != "" }${var.name}%{ else }unnamed%{ endif }!"
+    ~       Stripmarker for directives directly after { or before }
+
+REFERENCES
+https://www.terraform.io/docs/language/expressions/references.html
+
+Named Value Types:
+    Resources                                   <RESOURCE TYPE>.<NAME>
+    Input variables                             var.<NAME>
+    Local values                                local.<NAME>
+    Child module outputs                        module.<MODULE NAME>
+    Data sources                                data.<DATA TYPE>.<NAME>
+    Filesystem and workspace info
+    Block-local values
+
+
+Built in values
+    path.module             filesystem path of the module.
+    path.root               filesystem path of the root module.
+    path.cwd                filesystem path of the current working directory.
+    terraform.workspace     name of the currently selected workspace.
+
+Block-Local Values
+    count.index, in resources that use the count meta-argument.
+    each.key / each.value, in resources that use the for_each meta-argument.
+    self, in provisioner and connection blocks.
+
+
+OPERATORS
+https://www.terraform.io/docs/language/expressions/operators.html
+
+CONDITIONAL
+    condition ? true_val : false_val
+
+FOR EXAMPLES
+    [for k, v in var.map : length(k) + length(v)]
+    [for i, v in var.list : "${i} is ${v}"]
+    {for s in var.list : s => upper(s)}
+    [for s in var.list : upper(s) if s != ""]
+
+SPLAT EXPRESSSIONS
+A more concise way to express a common operation that could otherwise be performed with a for expression.
+    [for o in var.list : o.id]  
+        is equivalent to 
+    var.list[*].id
+
+DYNAMIC BLOCKS
+https://www.terraform.io/docs/language/expressions/dynamic-blocks.html
+
+VERSION CONSTRAINTS
+
+    = (or no operator): Allows only one exact version number. Cannot be combined with other conditions.
+    !=: Excludes an exact version number.
+    >, >=, <, <=: Comparisons against a specified version, allowing versions for which the comparison is true. 
+        "Greater-than" requests newer versions, and "less-than" requests older versions.
+    ~>: Allows only the rightmost version component to increment. For example, to allow new patch releases within a specific minor release, use the full version number: 
+        ~> 1.0.4 will allow installation of 1.0.5 and 1.0.10 but not 1.1.0. This is usually called the pessimistic constraint operator.
+
+
+

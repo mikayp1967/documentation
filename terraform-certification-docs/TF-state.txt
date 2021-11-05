@@ -1,0 +1,26 @@
+https://www.terraform.io/docs/language/state/index.html
+
+
+    terraform state 
+        list    List resources in the state
+        mv      Move an item in the state
+        pull    Pull current state and output to stdout
+        push    Update remote state from a local state file
+        rm      Remove an item from the state
+        show    Show a resource in the state
+
+
+
+WORKSPACES
+
+Terraform starts with a single workspace named "default"
+Workspaces are technically equivalent to renaming your state file.
+For local state, Terraform stores the workspace states in a directory called terraform.tfstate.d
+
+    terrawork workspace
+        delete                          Delete a workspace
+        list                            List Workspaces
+        new                             Create a new workspace and switch to it
+        select                          Select a workspace
+        show                            Show the name of the current workspace
+

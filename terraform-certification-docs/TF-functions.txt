@@ -1,0 +1,14 @@
+https://www.terraform.io/docs/language/functions/index.html
+
+STRING FUNCTIONS
+    chomp           removes newline characters at the end of a string.
+    format          formatting a number of other values according to a specification string. It is similar to the printf function
+    join(separator, list)
+
+COLLECTION FUNCTIONS
+    coalesce        takes any number of arguments and returns the first one that isn't null or an empty string.
+    concat          takes two or more lists and combines them into a single list.
+    element         retrieves a single element from a list.
+    range           generates a list of numbers using a start value, a limit value, and a step value.
+
+
