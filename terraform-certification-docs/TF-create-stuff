@@ -1,0 +1,5 @@
+Multiple EC2s
+https://www.bogotobogo.com/DevOps/Terraform/Terraform-creating-multiple-instances-count-list-type.php
+
+EC2 Module
+https://registry.terraform.io/modules/terraform-aws-modules/ec2-instance/aws/latest
