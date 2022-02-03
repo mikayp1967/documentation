@@ -32,10 +32,34 @@ MERGE MASTER LATEST TO CURRENT LOCAL BRANCH
 Combine 2 branches:
 	git pull origin <branch> where branch is the one you want to put on top
 	
-		
+
+
+## GPG Keys
+https://docs.gitlab.com/ee/user/project/repository/gpg_signed_commits/
+
+```
+    List available keys
+        gpg --list-secret-keys --keyid-format LONG <your_email>
+    Export key:
+        gpg --armor --export <key ID>
+    Add key to github
+
+    Associate key to git 
+        git config --global user.signingkey <key ID>
+
+
+    Sign Commits
+        git commit -S -m "message".....
+
+    Amend last commit
+        git commit -S --amend
+
+```
+
+
+
 ## Misc
 
 	git log
 
-	
 	
