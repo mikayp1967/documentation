@@ -8,7 +8,7 @@
     wget https://github.com/containerd/nerdctl/releases/download/v0.15.0/nerdctl-0.15.0-linux-amd64.tar.gz
     tar Cxzvvf /usr/local/bin nerdctl-0.15.0-linux-amd64.tar.gz
 
-    **As root:**
+**As root:**
 
         export NERD_VER=1.6.2
         wget https://github.com/containerd/nerdctl/releases/download/v${NERD_VER}/nerdctl-${NERD_VER}-linux-amd64.tar.gz
